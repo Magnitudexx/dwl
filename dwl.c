@@ -1094,6 +1094,8 @@ focusclient(Client *c, int lift)
 		wl_list_insert(&stack, &c->slink);
 	}
 
+	idleinhibitcheckactive(0);
+
 	if (c && client_surface(c) == old)
 		return;
 
@@ -2301,7 +2303,6 @@ toggleview(const Arg *arg)
 		focusclient(focustop(selmon), 1);
 		arrange(selmon);
 	}
-	idleinhibitcheckactive(0);
 	printstatus();
 }
 
@@ -2406,7 +2407,6 @@ view(const Arg *arg)
 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
 	focusclient(focustop(selmon), 1);
 	arrange(selmon);
-	idleinhibitcheckactive(0);
 	printstatus();
 }
 
