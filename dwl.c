@@ -1083,8 +1083,6 @@ focusclient(Client *c, int lift)
 		wl_list_insert(&stack, &c->slink);
 	}
 
-	idleinhibitcheckactive();
-
 	if (c && client_surface(c) == old)
 		return;
 
@@ -1116,6 +1114,7 @@ focusclient(Client *c, int lift)
 			client_activate_surface(old, 0);
 		}
 	}
+	idleinhibitcheckactive();
 
 	printstatus();
 
