@@ -12,7 +12,7 @@ LDLIBS += $(foreach p,$(PKGS),$(shell pkg-config --libs $(p)))
 all: dwl
 
 clean:
-	rm -f dwl *.o *-protocol.h *-protocol.c
+	rm dwl *.o *-protocol.h *-protocol.c
 
 install: dwl
 	install -D dwl $(PREFIX)/bin/dwl
