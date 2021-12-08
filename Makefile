@@ -9,10 +9,6 @@ PKGS = wlroots wayland-server xcb xkbcommon libinput
 CFLAGS += $(foreach p,$(PKGS),$(shell pkg-config --cflags $(p)))
 LDLIBS += $(foreach p,$(PKGS),$(shell pkg-config --libs $(p)))
 
-PREFIX?= /usr/local
-BINDIR?= $(PREFIX)/bin
-DESKTOP?= /usr/share/wayland-sessions
-
 all: dwl
 
 clean:
@@ -65,12 +61,3 @@ config.h: | config.def.h
 dwl.o: config.mk config.h client.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h idle-protocol.h
 
 dwl: xdg-shell-protocol.o wlr-layer-shell-unstable-v1-protocol.o idle-protocol.o
- 
-install:
-	install -Dm 755 dwl $(BINDIR)/dwl
-	install -Dm 644 dwl.desktop $(DESKTOP)/dwl.desktop
-
-uninstall:
-	rm -f $(BINDIR)/dwl
-	rm -f $(DESKTOP)/dwl.desktop
-
