@@ -320,6 +320,7 @@ static struct wl_list fstack;  /* focus order */
 static struct wl_list stack;   /* stacking z-order */
 static struct wl_list independents;
 static struct wlr_idle *idle;
+static struct wlr_input_inhibit_manager *inhibit_manager;
 static struct wlr_idle_inhibit_manager_v1 *idle_inhibit_mgr;
 static struct wlr_layer_shell_v1 *layer_shell;
 static struct wlr_output_manager_v1 *output_mgr;
